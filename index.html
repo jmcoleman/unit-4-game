@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- bootstrap 4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <title>Crystals Collector</title>
+</head>
+<body>
+
+    <!-- header and instructions -->
+    <h1>Crystals Collector</h1>
+    <p>You will be given a random number at the start of the game.</p>
+    <p>There are four crystals below.  By clicking on a crystal you will add a specific amount of points to your total score.</p>
+    <p>You win the game by matching your total score to a random number.  You lose the game if your total score goes above the random number.</p>
+    <p>The value of each crystal is hidden from you until you click on it.</p>
+    <p>Each time when the game starts, the game will change the values of each crystal.</p>
+
+    <!-- game stats-->
+    <div id="stats">
+        <div id="game-target">
+            <p><span id="random-number" hidden>0</span></p>
+        </div>
+        <div id="win-loss-stats">
+            <p id="game-message">Select a crystal!</p>
+            <p>Wins:&nbsp;<span id="total-wins">0</span></p>
+            <p>Losses:&nbsp;<span id="total-losses">0</span></p>
+        </div>
+    </div>
+
+    <!-- crystals -->
+    <img src="assets/images/crystal1.jpg" alt="Crystal Shape 1" id="crystal-1" class="crystal" value=0>
+    <img src="assets/images/crystal2.png" alt="Crystal Shape 2" id="crystal-2" class="crystal" value=0>
+    <img src="assets/images/crystal3.png" alt="Crystal Shape 3" id="crystal-3" class="crystal" value=0>
+    <img src="assets/images/crystal4.jpg" alt="Crystal Shape 4" id="crystal-4" class="crystal" value=0>
+
+    <!-- total score -->
+    <div id="total-score">
+            <p>Your total score is:&nbsp;<span id="total-score">0</span></p>
+    </div>
+
+    <!-- Bootstrap 4.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <!-- local js -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+</html>
