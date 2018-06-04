@@ -7,40 +7,57 @@
 
     <!-- bootstrap 4.1 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
 
     <title>Crystals Collector</title>
 </head>
 <body>
 
     <!-- header and instructions -->
-    <h1>Crystals Collector</h1>
-    <p>You will be given a random number at the start of the game.</p>
-    <p>There are four crystals below.  By clicking on a crystal you will add a specific amount of points to your total score.</p>
-    <p>You win the game by matching your total score to a random number.  You lose the game if your total score goes above the random number.</p>
-    <p>The value of each crystal is hidden from you until you click on it.</p>
-    <p>Each time when the game starts, the game will change the values of each crystal.</p>
+    <div class="jumbotron py-4">
+        <h1 class="display-4 text-center">Crystals Collector!</h1>
+        <br>
+        <p class="lead">You will be given a random number at the start of the game.</p>
+        <p class="lead">There are four crystals below.  By clicking on a crystal you will add a specific amount of points to your total score.</p>
+        <p class="lead">You win the game by matching your total score to a random number.  You lose the game if your total score goes above the random number.</p>
+        <p class="lead">The value of each crystal is hidden from you until you click on it.</p>
+        <p class="lead">Each time when the game starts, the game will change the values of each crystal.</p>
+    </div>
 
     <!-- game stats-->
-    <div id="stats">
+    <div id="stats" class="d-flex justify-content-around my-3">
         <div id="game-target">
-            <p><span id="random-number" hidden>0</span></p>
+            <p class="lead"><span id="random-number">0</span></p>
         </div>
         <div id="win-loss-stats">
-            <p id="game-message">Select a crystal!</p>
-            <p>Wins:&nbsp;<span id="total-wins">0</span></p>
-            <p>Losses:&nbsp;<span id="total-losses">0</span></p>
+            <p id="game-message" class="lead"></p>
+            <p class="lead">Wins:&nbsp;<span id="total-wins">0</span></p>
+            <p class="lead">Losses:&nbsp;<span id="total-losses">0</span></p>
         </div>
     </div>
 
     <!-- crystals -->
-    <img src="assets/images/crystal1.jpg" alt="Crystal Shape 1" id="crystal-1" class="crystal" value=0>
-    <img src="assets/images/crystal2.png" alt="Crystal Shape 2" id="crystal-2" class="crystal" value=0>
-    <img src="assets/images/crystal3.png" alt="Crystal Shape 3" id="crystal-3" class="crystal" value=0>
-    <img src="assets/images/crystal4.jpg" alt="Crystal Shape 4" id="crystal-4" class="crystal" value=0>
+    <div class="text-center">
+        <button class="btn btn-outline-secondary border-0 px-3 py-3 mx-3 crystal">
+            <img src="assets/images/crystal1.jpg" alt="Crystal Shape 1" id="crystal-1" class="img-crystal" value=0>
+        </button>
+        <button class="btn btn-outline-secondary border-0 px-3 py-3 mx-3 crystal">
+            <img src="assets/images/crystal2.png" alt="Crystal Shape 2" id="crystal-2" class="img-crystal" value=0>
+        </button>
+        <button class="btn btn-outline-secondary border-0 px-3 py-3 mx-3 crystal">
+            <img src="assets/images/crystal3.png" alt="Crystal Shape 3" id="crystal-3" class="img-crystal" value=0>
+        </button>
+        <button class="btn btn-outline-secondary border-0 px-3 py-3 mx-3 crystal">
+            <img src="assets/images/crystal4.jpg" alt="Crystal Shape 4" id="crystal-4" class="img-crystal" value=0>
+        </button>
+    </div>
 
     <!-- total score -->
-    <div id="total-score">
-            <p>Your total score is:&nbsp;<span id="total-score">0</span></p>
+    <div id="total-score" class="d-flex justify-content-around my-3">
+        <div>
+            <p class="lead">Your total score is:&nbsp;<div id="total-score">0</div></p>
+        </div>
+        <div></div>
     </div>
 
     <!-- Bootstrap 4.1 -->

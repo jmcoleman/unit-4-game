@@ -1,0 +1,16 @@
+
+body {
+    background: url("../images/congruent_pentagon.png") center fixed;
+}
+
+button.crystal {
+    display: inline-block;
+    background: white;
+}
+
+img.img-crystal {
+    height: 100px;
+    width: 100px;
+}
+
+
