@@ -5,49 +5,100 @@ $(document).ready(function() {
     var totalWins = 0;
     var totalLosses = 0;
 
-    // running total
-    var gamePoints = 0;
+    var game = {
 
-    // generate random number
-    var gameTargetNbr = getRandomIntInclusive(19,120);
-    console.log("Target: ", gameTargetNbr);
+        // running total
+        gamePoints: 0,
 
-    // generate each crystals random number.  Used to increment by that value when adding to total score.
-    var crystal1PointValue = getRandomIntInclusive(1,12);
-    var crystal2PointValue = getRandomIntInclusive(1,12);
-    var crystal3PointValue = getRandomIntInclusive(1,12);
-    var crystal4PointValue = getRandomIntInclusive(1,12);
-    console.log("Crystals 1-4: ", crystal1PointValue + " " + crystal2PointValue + " " + crystal3PointValue + " " + crystal4PointValue);
+        // generate random number
+        gameTargetNbr: 0,
 
-    $("#crystal-1").attr("value", crystal1PointValue.toString());
-    $("#crystal-2").attr("value", crystal2PointValue.toString());
-    $("#crystal-3").attr("value", crystal3PointValue.toString());
-    $("#crystal-4").attr("value", crystal4PointValue.toString());
+        // generate each crystals random number.  Used to increment by that value when adding to total score.
+        crystal1PointValue: 0,
+        crystal2PointValue: 0,
+        crystal3PointValue: 0,
+        crystal4PointValue: 0,
 
-    function getRandomIntInclusive(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;       //The maximum is inclusive and the minimum is inclusive 
-    }
+        getRandomIntInclusive: function (min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;                       //The maximum is inclusive and the minimum is inclusive 
+        },
+
+        logTargetNumber: function() {
+            console.log("Target: ", this.gameTargetNbr);
+        },
+
+        logCrystalPointValues: function() {
+            console.log("Crystals 1-4: ", this.crystal1PointValue + " " + this.crystal2PointValue + " " + this.crystal3PointValue + " " + this.crystal4PointValue);
+        },
+
+        setTargetValue: function() {
+            $("#game-target").text(this.gameTargetNbr.toString());
+        },
+
+        setGamePoints: function() {
+            $("#total-score").text(this.gamePoints);
+        },
+
+        setCrystalPointValues: function() {
+            $("#crystal-1").attr("value", this.crystal1PointValue.toString());
+            $("#crystal-2").attr("value", this.crystal2PointValue.toString());
+            $("#crystal-3").attr("value", this.crystal3PointValue.toString());
+            $("#crystal-4").attr("value", this.crystal4PointValue.toString());
+        },
+
+        newGame: function() {
+            // running total
+            this.gamePoints = 0;
+
+            // generate random number
+            this.gameTargetNbr = this.getRandomIntInclusive(19,120);
+
+            // generate each crystals random number.  Used to increment by that value when adding to total score.
+            this.crystal1PointValue = this.getRandomIntInclusive(1,12);
+            this.crystal2PointValue = this.getRandomIntInclusive(1,12);
+            this.crystal3PointValue = this.getRandomIntInclusive(1,12);
+            this.crystal4PointValue = this.getRandomIntInclusive(1,12);
+
+            this.setCrystalPointValues();
+            this.setTargetValue();
+            this.setGamePoints();
+
+            this.logTargetNumber();
+            this.logCrystalPointValues();
+        }
+    };
+
+    game.newGame();
 
     // handle btn click events for each crystal
     $(".crystal").on("click", function() {
-        console.log("Value is: " + $(this).find("img").attr("value"));        //  $(this).find('a:first').attr('id')
+        console.log("Value is: " + $(this).find("img").attr("value"));       
 
         var pointsToAdd = $(this).find("img").attr("value");
-        gamePoints += parseInt(pointsToAdd);
-        console.log("Running total: " + gamePoints);
+        game.gamePoints += parseInt(pointsToAdd);
+        console.log("Running total: " + game.gamePoints);
+        game.setGamePoints();
 
-        if (gamePoints === gameTargetNbr) {         // win
-            alert("You win");                                                                             //TODO temp remove and output
+        if (game.gamePoints === game.gameTargetNbr) {         // win
+            //alert("You win");                                                                             
+
             totalWins++;         
+            $("#total-wins").text(totalWins);
+
             console.log("Wins: " + totalWins);
-        } else if (gamePoints > gameTargetNbr) {    // lose
-            alert("You lose.");
+            game.newGame();
+        } else if (game.gamePoints > game.gameTargetNbr) {    // lose
+            //alert("You lose.");
+
             totalLosses++;
+            $("#total-losses").text(totalLosses);
+
             console.log("Losses: " + totalLosses);
+            game.newGame();
         };
-                                                                    //TODO reset game and put game in object
-                                                                    // TODO  write stats to UI
+
     });
-});
+
+});     // end jquery
